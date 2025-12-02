@@ -26,7 +26,7 @@ const imageSources = [
 ];
 
 // How long each photo is displayed (milliseconds)
-const DISPLAY_TIME = 1200; // 1.2 seconds
+const DISPLAY_TIME = 5000; // 5.0 seconds
 
 // How long between fade-out and the new image showing (ms)
 const FADE_BUFFER = 250;
