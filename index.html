@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Funcleson Funkatorium — Photo Drop Board</title>
+    <title>Funcleson Photo Slideshow</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Retro / neon-style font -->
+    <!-- Same retro font if you want to keep the vibe (not strictly needed now) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
@@ -15,49 +15,13 @@
     <script defer src="slideshow.js"></script>
   </head>
   <body>
-    <div class="board">
-      <header class="board-header">
-        <div class="board-header-left">
-          <div class="board-title">Funcleson Funkatorium</div>
-          <div class="board-subtitle">PHOTO DROP</div>
-        </div>
-
-        <!-- Neon QR block -->
-        <div class="qr-block">
-          <div class="qr-label-top">ADD YOUR PHOTOS</div>
-          <div class="qr-frame">
-            <img
-              src="assets/photo-drop-qr.png"
-              alt="Scan to add your photos"
-              class="qr-img"
-            />
-          </div>
-          <div class="qr-label-bottom">SCAN TO DROP</div>
-        </div>
-      </header>
-
-      <main class="board-main">
-        <div class="photo-frame">
-          <div class="corner corner-tl"></div>
-          <div class="corner corner-tr"></div>
-          <div class="corner corner-bl"></div>
-          <div class="corner corner-br"></div>
-
-          <img
-            id="photo-slide"
-            src=""
-            alt="Funcleson Funkatorium Photo"
-            class="photo-img"
-          />
-        </div>
-      </main>
-
-      <footer class="board-footer">
-        <div class="footer-text">
-          Neon nights at the Funcleson Funkatorium • Rotate your beers, rotate
-          your memories 🍺📸
-        </div>
-      </footer>
+    <div class="frame">
+      <img
+        id="photo-slide"
+        src=""
+        alt="Funcleson Photo"
+        class="photo-img"
+      />
     </div>
   </body>
 </html>
