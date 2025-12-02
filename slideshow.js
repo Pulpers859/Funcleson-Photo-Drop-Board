@@ -31,20 +31,31 @@ const DISPLAY_TIME = 1200; // 1.2 seconds
 // How long between fade-out and the new image showing (ms)
 const FADE_BUFFER = 250;
 
-let currentIndex = 0;
 let imgEl = null;
+let currentIndex = -1; // -1 means "none shown yet"
+
+// Pick a random index, but don't repeat the one we just showed
+function getRandomNextIndex() {
+  if (imageSources.length <= 1) return 0;
+
+  let nextIndex;
+  do {
+    nextIndex = Math.floor(Math.random() * imageSources.length);
+  } while (nextIndex === currentIndex);
+
+  return nextIndex;
+}
 
 function showImage(index) {
   if (!imgEl || !imageSources.length) return;
 
-  // Fade out current image
   imgEl.classList.remove("show");
 
   setTimeout(() => {
-    imgEl.src = imageSources[index];
+    const src = imageSources[index];
+    imgEl.src = src;
 
     imgEl.onload = () => {
-      // Ensure style changes apply after src swap
       requestAnimationFrame(() => {
         imgEl.classList.add("show");
       });
@@ -56,13 +67,13 @@ function startSlideshow() {
   imgEl = document.getElementById("photo-slide");
   if (!imgEl || !imageSources.length) return;
 
-  // Start with the first image
-  currentIndex = 0;
+  // First image
+  currentIndex = getRandomNextIndex();
   showImage(currentIndex);
 
-  // Cycle through the rest
+  // Every DISPLAY_TIME, pick a new random image (not the same as last)
   setInterval(() => {
-    currentIndex = (currentIndex + 1) % imageSources.length;
+    currentIndex = getRandomNextIndex();
     showImage(currentIndex);
   }, DISPLAY_TIME);
 }
