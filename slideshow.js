@@ -3,9 +3,13 @@
 // 1) Put your photo filenames in this array.
 //    They must exist under the /photos folder.
 const imageSources = [
-  "photos/photo1.jpg",
-  "photos/photo2.jpg",
-  "photos/photo3.jpg",
+  "photos/A Hinderance No More.png",
+  "photos/Breakfast of Beer Pong Champoions.png",
+  "photos/The Perfect Fathers Xoco.png",
+  "photos/The Light at the End of the Night.png",
+  "photos/The Shmee.png",
+  "photos/Coconut Bartender.png",
+
   // Add more here as needed
 ];
 
