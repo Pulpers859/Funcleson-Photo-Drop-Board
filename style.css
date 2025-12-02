@@ -1,0 +1,225 @@
+:root {
+  /* COPY THESE FROM YOUR BEER MENU IF YOU WANT PERFECT MATCH */
+  --bg: #050008;
+  --accent-1: #00fff6; /* cyan */
+  --accent-2: #ff00e5; /* magenta/pink */
+  --text-main: #f5f5f5;
+
+  --font-main: "Press Start 2P", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at top, #1b0033 0, #000 55%, #000 100%);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Board layout */
+.board {
+  width: 100vw;
+  height: 100vh;
+  padding: 2.5vh 3vw;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 2vh;
+}
+
+/* Header */
+.board-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2vw;
+}
+
+.board-header-left {
+  text-shadow: 0 0 6px var(--accent-1), 0 0 16px var(--accent-2);
+}
+
+.board-title {
+  font-size: 2.1rem;
+  letter-spacing: 0.09em;
+  margin-bottom: 0.5rem;
+}
+
+.board-subtitle {
+  font-size: 1.1rem;
+  color: var(--accent-1);
+}
+
+/* QR block */
+.qr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  border: 2px solid var(--accent-2);
+  box-shadow: 0 0 10px var(--accent-2), 0 0 25px var(--accent-1);
+  background: radial-gradient(circle at center, #330044 0, #080010 65%, #000 100%);
+}
+
+.qr-label-top,
+.qr-label-bottom {
+  font-size: 0.55rem;
+  text-align: center;
+  color: var(--accent-1);
+}
+
+.qr-frame {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 2px solid var(--accent-1);
+  background: #000;
+  box-shadow: 0 0 12px var(--accent-1);
+}
+
+.qr-img {
+  display: block;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+/* Main */
+.board-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-frame {
+  position: relative;
+  width: 80vw;
+  height: 70vh;
+  max-width: 1400px;
+  max-height: 780px;
+  border: 3px solid var(--accent-1);
+  box-shadow: 0 0 12px var(--accent-1), 0 0 35px var(--accent-2);
+  background: radial-gradient(circle at center, #220033 0, #050008 65%, #000 100%);
+  overflow: hidden;
+}
+
+/* CRT-style corners */
+.corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--accent-2);
+  box-shadow: 0 0 8px var(--accent-2);
+}
+
+.corner-tl {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-tr {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+}
+
+.corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Image */
+.photo-img {
+  position: absolute;
+  inset: 3.5rem 3.5rem;
+  width: calc(100% - 7rem);
+  height: calc(100% - 7rem);
+  object-fit: contain;
+  filter: saturate(1.2) contrast(1.05);
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.photo-img.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Footer */
+.board-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--accent-1);
+  text-shadow: 0 0 6px var(--accent-1);
+}
+
+.footer-text {
+  opacity: 0.9;
+}
+
+/* Scanline / CRT vibe */
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0.12;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .board-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .photo-frame {
+    width: 92vw;
+    height: 60vh;
+  }
+
+  .photo-img {
+    inset: 2.8rem 2.8rem;
+    width: calc(100% - 5.6rem);
+    height: calc(100% - 5.6rem);
+  }
+}
