@@ -19,16 +19,10 @@ body {
   font-family: "Press Start 2P", system-ui, sans-serif;
 }
 
-/*
-  FRAME
-  - Full-height portrait
-  - Thin neon blue border
-*/
+/* Full-screen-ish container, no border */
 .frame {
-  height: 100vh;              /* fill screen height */
-  width: auto;
-  aspect-ratio: 9 / 16;       /* portrait shape; adjust if you like */
-
+  width: 100vw;
+  height: 100vh;
   background: #000;
   overflow: hidden;
   display: flex;
@@ -36,17 +30,17 @@ body {
   justify-content: center;
 }
 
-/*
-  IMAGE
-  - Fills frame
-  - Change object-fit to "cover" if you want it to crop and truly fill
-*/
+/* Image: nearly full-screen, light on GPU */
 .photo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;   /* use "cover" for no letterboxing but possible crop */
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;   /* safer for FireTV; no forced crop scaling */
+
+  display: block;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.9s ease-in-out;  /* smooth fade but not too heavy */
 }
 
 .photo-img.show {
