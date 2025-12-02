@@ -1,26 +1,21 @@
 :root {
-  /* Tweak these to match your beer menu colors if you like */
-  --bg: #050608;
-  --panel: #0b0e11;
-  --accent-1: #00ffc3; /* soft cyan */
-  --accent-2: #ff6bd5; /* soft magenta */
+  /* Match your beer menu style */
+  --bg: #0a0a0a;
+  --panel: #111317;
+  --accent: #00ffc3; 
+  --accent-soft: rgba(0, 255, 195, 0.5);
   --text-main: #e8f0ff;
-
-  --font-main: "Press Start 2P", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  --font-main: "Press Start 2P", monospace;
 }
 
 /* Reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   width: 100%;
   height: 100%;
 }
@@ -34,195 +29,41 @@ body {
   justify-content: center;
 }
 
-/* Board layout */
+/* Main board grid */
 .board {
   width: 100vw;
   height: 100vh;
   padding: 2vh 3vw;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 1.5vh;
+  gap: 2vh;
 }
 
 /* Header */
 .board-header {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
-  gap: 2vw;
-}
-
-.board-header-left {
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  align-items: flex-end;
 }
 
 .board-title {
-  font-size: 1.6rem;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.35rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.07em;
+  color: var(--accent);
 }
 
 .board-subtitle {
-  font-size: 0.8rem;
-  color: var(--accent-1);
+  font-size: 0.7rem;
+  opacity: 0.85;
+  color: var(--text-main);
 }
 
-/* QR block – calmer, less neon */
+/* QR block - minimal */
 .qr-block {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 0.9rem;
   border-radius: 6px;
-  border: 1px solid rgba(0, 255, 195, 0.45);
-  background: #050608;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-}
-
-.qr-label-top,
-.qr-label-bottom {
-  font-size: 0.45rem;
-  text-align: center;
-  color: var(--accent-1);
-  opacity: 0.9;
-}
-
-.qr-frame {
-  padding: 0.4rem;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 255, 195, 0.6);
-  background: #000;
-}
-
-.qr-img {
-  display: block;
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-}
-
-/* Main */
-.board-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Photo frame – flatter, lighter neon */
-.photo-frame {
-  position: relative;
-  width: 80vw;
-  height: 70vh;
-  max-width: 1320px;
-  max-height: 740px;
-  border-radius: 10px;
-  border: 2px solid rgba(0, 255, 195, 0.7);
-  background: var(--panel);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.02),
-    0 10px 30px rgba(0, 0, 0, 0.8);
-  overflow: hidden;
-}
-
-/* Corners – much smaller, subtle */
-.corner {
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  border: 2px solid rgba(255, 107, 213, 0.8);
-}
-
-.corner-tl {
-  top: 8px;
-  left: 8px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.corner-tr {
-  top: 8px;
-  right: 8px;
-  border-left: none;
-  border-bottom: none;
-}
-
-.corner-bl {
-  bottom: 8px;
-  left: 8px;
-  border-right: none;
-  border-top: none;
-}
-
-.corner-br {
-  bottom: 8px;
-  right: 8px;
-  border-left: none;
-  border-top: none;
-}
-
-/* Image – no wild glow, just a smooth fade */
-.photo-img {
-  position: absolute;
-  inset: 2.4rem 2.4rem;
-  width: calc(100% - 4.8rem);
-  height: calc(100% - 4.8rem);
-  object-fit: contain;
-  filter: saturate(1.05) contrast(1.02);
-  opacity: 0;
-  transform: scale(0.995);
-  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-}
-
-.photo-img.show {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Footer */
-.board-footer {
-  text-align: center;
-  font-size: 0.65rem;
-  color: rgba(0, 255, 195, 0.9);
-}
-
-.footer-text {
-  opacity: 0.85;
-}
-
-/* Optional VERY subtle scanline – much calmer */
-body::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.04),
-    rgba(255, 255, 255, 0.04) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-  mix-blend-mode: soft-light;
-  opacity: 0.05;
-}
-
-/* Responsive tweaks */
-@media (max-width: 900px) {
-  .board-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .photo-frame {
-    width: 92vw;
-    height: 60vh;
-  }
-
-  .photo-img {
-    inset: 2rem 2rem;
-    width: calc(100% - 4rem);
-    height: calc(100% - 4rem);
-  }
-}
+  border:
