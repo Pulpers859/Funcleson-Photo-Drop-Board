@@ -14,42 +14,37 @@ body {
 body {
   background: #000;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: stretch;
   font-family: "Press Start 2P", system-ui, sans-serif;
 }
 
-/*
-  FRAME
-  - Full-height portrait
-  - Thin neon blue border
-*/
+/* Full-screen frame with NO border */
 .frame {
-  height: 100vh;              /* fill screen height */
-  width: auto;
-  aspect-ratio: 9 / 16;       /* portrait shape; adjust if you like */
-  border: 3px solid #00bfff;  /* thin blue neon border */
-  box-shadow:
-    0 0 8px #00bfff,
-    0 0 20px rgba(0, 191, 255, 0.7);
-  background: #000;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
+  background: #000; /* just in case image aspect ratio is off */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/*
-  IMAGE
-  - Fills frame
-  - Change object-fit to "cover" if you want it to crop and truly fill
+/* Image fills entire screen */
+
+/* 
+  - object-fit: cover makes it behave like a true poster:
+    fills the space even if it means a tiny bit of cropping.
 */
 .photo-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;   /* use "cover" for no letterboxing but possible crop */
+  object-fit: cover;
+  display: block;
+
+  /* smoother fade transition */
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 1.2s ease-in-out;
 }
 
 .photo-img.show {
