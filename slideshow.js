@@ -9,7 +9,19 @@ const imageSources = [
   "photos/The Light at the End of the Night.png",
   "photos/The Shmee.png",
   "photos/Coconut Bartender.png",
-
+"photos/Funcledaze.png",
+  "photos/Funclescrumptious.png",
+  "photos/Holy Ratrimony.png",
+  "photos/IPAssum & Friends.png",
+  "photos/Neanderthalitan Stout.png",
+  "photos/Purpaul Drank_1.png",
+  "photos/Resonance in the Funcleverse.png",
+  "photos/Road to Funclerado.png",
+  "photos/Scream It.png",
+  "photos/Slave to the Check-ins.png",
+  "photos/Smooth Criminals.png",
+  "photos/The Beer of Beers.png",
+  "photos/Three Hos.png",
   // Add more here as needed
 ];
 
